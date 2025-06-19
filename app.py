@@ -18,7 +18,7 @@ def init_db():
 @app.route('/')
 @app.route('/login-roulette/')
 def login():
-    return open("templates/login.html").read()
+    return open("login.html").read()
 
 @app.route('/auth', methods=['POST'])
 def auth():
