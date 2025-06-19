@@ -1,6 +1,6 @@
-This is a CTF challenge
-Start by using SQL injection to get in
-Then decode the session cookie
-Then change the role to admin and encode it
-Put it in the session cookie
-Reload and the flag will appear
+This is a CTF challenge <br>
+Start by using SQL injection to get in<br>
+Then decode the session cookie<br>
+Then change the role to admin and encode it<br>
+Put it in the session cookie<br>
+Reload and the flag will appear<br>
