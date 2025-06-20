@@ -1,12 +1,116 @@
 <!DOCTYPE html>
-<html>
-<head><title>Login Roulette</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Fun</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #dceefb, #e2eafc);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      animation: fadeInBody 1s ease-out;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .login-container {
+      background: white;
+      padding: 2.5rem 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 340px;
+      text-align: center;
+      animation: dropIn 0.8s ease-out;
+    }
+
+    @keyframes dropIn {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.4rem;
+      font-weight: 600;
+      color: #34495e;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #bdc3c7;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 6px #a3d2fc;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      margin-top: 1.8rem;
+      width: 100%;
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+    }
+
+    /* Optional bounce animation for errors */
+    .shake {
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+  </style>
+</head>
 <body>
-<h2>Login</h2>
-<form action="/auth" method="POST">
-  Username: <input type="text" name="username" /><br />
-  Password: <input type="password" name="password" /><br />
-  <input type="submit" value="Login" />
-</form>
+  <div class="login-container">
+    <h2>Login Fun 🎈</h2>
+    <form action="/auth" method="POST">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <input type="submit" value="Login" />
+    </form>
+  </div>
 </body>
 </html>
