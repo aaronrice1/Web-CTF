@@ -44,7 +44,7 @@ def admin_flag():
     try:
         session_json = json.loads(base64.b64decode(session_cookie))
         if session_json.get("role") == "admin":
-            return "Flag: CTF{sql_and_cookies_are_not_a_safe_dessert}"
+            return "Flag: flag{sql_and_cookies_is_a_great_dessert}"
     except:
         pass
     return "Access denied", 403
