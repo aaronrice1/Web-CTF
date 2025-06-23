@@ -10,8 +10,8 @@ def init_db():
     c = conn.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)")
     c.execute("DELETE FROM users")
-    c.execute("INSERT INTO users VALUES ('admin', 'supersecret')")
-    c.execute("INSERT INTO users VALUES ('hacker', '1234')")
+    c.execute("INSERT INTO users VALUES ('someuser', 'somepassword')")
+    c.execute("INSERT INTO users VALUES ('someotheruser', 'someotherpassword')")
     conn.commit()
     conn.close()
 
@@ -44,7 +44,7 @@ def admin_flag():
     try:
         session_json = json.loads(base64.b64decode(session_cookie))
         if session_json.get("role") == "admin":
-            return "Flag: flag{sql_and_cookies_is_a_great_dessert}"
+            return "Flag: flag{that_was_easy,_right?!?!?!}"
     except:
         pass
     return "Access denied", 403
