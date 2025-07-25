@@ -9,7 +9,6 @@ def init_db():
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
     usernames = [
-        "tofu_ninja",
         "potato_queen",
         "penguin_boi",
         "sneeze_master",
@@ -18,7 +17,8 @@ def init_db():
         "keyboard_cat99",
         "cactus_juggler",
         "toilet_emperor",
-        "duck_detective"
+        "duck_detective",
+        "tofu_ninja"
     ]
     
     passwords = [
