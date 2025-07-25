@@ -36,7 +36,7 @@ def init_db():
     c.execute("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)")
     c.execute("DELETE FROM users")
     for i in range(len(usernames)):
-        c.execute(f"INSERT INTO users VALUES ({usernames[i]}, {passwords[i]})")
+        c.execute(f"INSERT INTO users VALUES (?, ?)", (usernames[i], passwords[i]))
     conn.commit()
     conn.close()
 
