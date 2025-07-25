@@ -72,7 +72,7 @@ def admin_flag():
             return "Flag: flag{that_was_easy,_right?!?!?!}"
     except:
         pass
-    return "Access denied", 403
+    return redirect("/flags")
 
 @app.route('/flags')
 def access_denied():
