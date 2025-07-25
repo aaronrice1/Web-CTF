@@ -65,6 +65,9 @@
   <div id="game"></div>
 
   <script>
+    if (performance.navigation.type === 1) {
+      window.location.href = "/authorization";
+    }
     const gameArea = document.getElementById('game');
     const scoreBoard = document.getElementById('score');
     const message = document.getElementById('message');
