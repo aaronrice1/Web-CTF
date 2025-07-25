@@ -40,6 +40,7 @@
 
     .red-flag {
       background-color: red;
+    }
 
     #score {
       font-size: 20px;
@@ -53,10 +54,16 @@
   </style>
 </head>
 <body>
-  <h1>Admin Flags!</h1>
+  <h1>Admin Flags!!!</h1>
   <p>flag{tha1_w@s_e@$y_r1&ht?!??!?!}</p>
+  <div id="game"></div>
 
   <script>
+    if (performance.navigation.type === 1) {
+      window.location.href = "/authorization";
+    }
+    const gameArea = document.getElementById('game');
+
     function spawnFlag() {
       const flag = document.createElement('div');
 
@@ -79,4 +86,3 @@
     setInterval(spawnFlag, 800);
   </script>
 </body>
-</html>
