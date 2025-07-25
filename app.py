@@ -8,10 +8,35 @@ app = Flask(__name__)
 def init_db():
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
+    usernames = [
+        "tofu_ninja",
+        "potato_queen",
+        "penguin_boi",
+        "sneeze_master",
+        "pickle_wizard",
+        "spaghetti_agent",
+        "keyboard_cat99",
+        "cactus_juggler",
+        "toilet_emperor",
+        "duck_detective"
+    ]
+    
+    passwords = [
+        "ILike2Sneeze@Midnight",
+        "Y0uSmellLikeToast!",
+        "P@ssword123LOL",
+        "FunkyMonkey42$",
+        "DontTouchMyPickle9!",
+        "C0ffeeSp1llsEverywhere",
+        "DucksRuleTheWorld#1",
+        "404BrainNotFound!",
+        "Waffles>Everything",
+        "Sleepy_Cactus88$"
+    ]
     c.execute("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)")
     c.execute("DELETE FROM users")
-    c.execute("INSERT INTO users VALUES ('someuser', 'somepassword')")
-    c.execute("INSERT INTO users VALUES ('someotheruser', 'someotherpassword')")
+    for i in range(len(usernames)):
+        c.execute("INSERT INTO users VALUES (usernames[i], passwords[i])")
     conn.commit()
     conn.close()
 
@@ -47,7 +72,11 @@ def admin_flag():
             return "Flag: flag{that_was_easy,_right?!?!?!}"
     except:
         pass
-    return "Access denied", 403
+    return redirect("/flags")
+
+@app.route('/flags')
+def access_denied():
+    return open("flags.html").read(), 403
 
 if __name__ == "__main__":
     init_db()
