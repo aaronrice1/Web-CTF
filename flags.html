@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Denied - Click the Red Flags!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #fff5f5;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1, p {
+      margin: 10px;
+    }
+
+    #game {
+      position: relative;
+      width: 100vw;
+      height: 80vh;
+      background-color: #ffeaea;
+      border-top: 3px solid #cc0000;
+      overflow: hidden;
+    }
+
+    .flag {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      clip-path: polygon(0 0, 100% 25%, 0 50%, 20% 25%);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .flag:hover {
+      transform: scale(1.1);
+    }
+
+    .red-flag {
+      background-color: red;
+    }
+
+    .green-flag {
+      background-color: green;
+    }
+
+    #score {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #message {
+      margin-top: 5px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚫 403 - Access Denied</h1>
+  <p>You’re locked out. But hey — how good are you at spotting red flags?</p>
+  <div id="score">Score: 0</div>
+  <div id="message"></div>
+  <div id="game"></div>
+
+  <script>
+    const gameArea = document.getElementById('game');
+    const scoreBoard = document.getElementById('score');
+    const message = document.getElementById('message');
+    let score = 0;
+
+    function spawnFlag() {
+      const flag = document.createElement('div');
+      const isRed = Math.random() < 0.7; // 70% chance it's a red flag
+
+      flag.classList.add('flag');
+      flag.classList.add(isRed ? 'red-flag' : 'green-flag');
+
+      const x = Math.random() * (window.innerWidth - 60);
+      const y = Math.random() * (window.innerHeight - 150);
+
+      flag.style.left = `${x}px`;
+      flag.style.top = `${y}px`;
+
+      flag.onclick = () => {
+        if (isRed) {
+          score++;
+          message.textContent = "Nice! That was a red flag.";
+        } else {
+          score = Math.max(0, score - 2);
+          message.textContent = "Oof. That was a green flag. -2 points.";
+        }
+        scoreBoard.textContent = `Score: ${score}`;
+        flag.remove();
+      };
+
+      gameArea.appendChild(flag);
+
+      // Auto-remove after 2 seconds
+      setTimeout(() => flag.remove(), 2000);
+    }
+
+    // Spawn every 800ms
+    setInterval(spawnFlag, 800);
+  </script>
+</body>
+</html>
