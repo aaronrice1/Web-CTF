@@ -66,13 +66,13 @@ def auth():
 @app.route('/authorization')
 def authorization():
     session_cookie = request.cookies.get("session", "")
-        try:
-            session_json = json.loads(base64.b64decode(session_cookie))
-            if session_json.get("role") == "admin":
-                return redirect('/admin/flag')
-        except:
-            pass
-        return redirect("/flags")
+    try:
+        session_json = json.loads(base64.b64decode(session_cookie))
+        if session_json.get("role") == "admin":
+            return redirect('/admin/flag')
+    except:
+        pass
+    return redirect("/flags")
 
 @app.route('/admin/flag')
 def admin_flag():
