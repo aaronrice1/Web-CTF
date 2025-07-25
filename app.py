@@ -22,9 +22,9 @@ def init_db():
     ]
     
     passwords = [
-        "ILike2Sneeze@Midnight",
+        "ILike2Sneeze\@Midnight",
         "Y0uSmellLikeToast!",
-        "P@ssword123LOL",
+        "P\@ssword123LOL",
         "FunkyMonkey42$",
         "DontTouchMyPickle9!",
         "C0ffeeSp1llsEverywhere",
