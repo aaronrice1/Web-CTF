@@ -58,21 +58,25 @@ def auth():
     if result:
         session_data = {"user": result[0], "role": "user"}
         session_str = base64.b64encode(json.dumps(session_data).encode()).decode()
-        resp = make_response(redirect("/admin/flag"))
+        resp = make_response(redirect("/authorization"))
         resp.set_cookie("session", session_str)
         return resp
     return "Invalid credentials", 403
 
+@app.route('/authorization')
+def authorization():
+    session_cookie = request.cookies.get("session", "")
+        try:
+            session_json = json.loads(base64.b64decode(session_cookie))
+            if session_json.get("role") == "admin":
+                return redirect('/admin/flag')
+        except:
+            pass
+        return redirect("/flags")
+
 @app.route('/admin/flag')
 def admin_flag():
-    session_cookie = request.cookies.get("session", "")
-    try:
-        session_json = json.loads(base64.b64decode(session_cookie))
-        if session_json.get("role") == "admin":
-            return "Flag: flag{that_was_easy,_right?!?!?!}"
-    except:
-        pass
-    return redirect("/flags")
+    return open("flag.html").read()
 
 @app.route('/flags')
 def access_denied():
